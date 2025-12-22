@@ -1,0 +1,261 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BakelitePlastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Plaster.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/robotiq/protos/Robotiq2f85Gripper.proto"
+EXTERNPROTO "../protos/UR5e.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/PlasticCrate.proto"
+
+WorldInfo {
+  info [
+    "This example showcases Franka Emika's Panda robot in a factory setting."
+  ]
+  title "Panda demo"
+  basicTimeStep 16
+}
+DEF VIEWPOINT Viewpoint {
+  orientation -0.2403381159670055 -0.21041804961124214 0.9476084816057901 4.768103696329325
+  position -0.8400021697181328 6.800401867192061 2.741939179648292
+  ambientOcclusionRadius 1
+}
+DEF UR5E UR5e {
+  hidden position_0_0 0.14996979773965619
+  hidden rotation_1 0 0 1 0.1499697977396575
+  hidden position_1_0 -1.5999688046195695
+  hidden linearVelocity_1 -1.1788826137983427e-06 9.655335940095044e-06 -5.179458185736246e-07
+  hidden angularVelocity_1 -3.664557546506804e-07 1.2556454660863166e-08 0.00035962019352817857
+  hidden rotation_2 0 -1 0 0.02917280461955955
+  hidden position_2_0 1.5000600763474117
+  hidden linearVelocity_2 1.4580836023517568e-05 -7.387406213977625e-05 -1.8368939929125784e-06
+  hidden angularVelocity_2 0.00012351921647974715 1.9453727215125156e-05 0.0003595182664230303
+  hidden rotation_3 0 1 0 1.500060076347412
+  hidden position_3_0 -1.6000292012668271
+  hidden linearVelocity_3 -3.77704628744569e-05 -7.03174844788731e-05 8.32274277940551e-05
+  hidden angularVelocity_3 0.0005716358496241486 8.912352249536609e-05 0.0003598973097305064
+  hidden rotation_4 0 -0.9999999999999999 0 0.02923320126681871
+  hidden position_4_0 -1.6999909952062893
+  hidden linearVelocity_4 -0.00011409727240867499 -0.0001433469177985888 0.00022224726613550829
+  hidden angularVelocity_4 0.00019640293798634233 3.0445347098931903e-05 0.0003596833915241437
+  hidden rotation_5 0 0 -1 1.6999909952062893
+  hidden position_5_0 1.0300199372246703
+  hidden linearVelocity_5 -0.00014880075001354843 -0.000151274266663739 0.00024166541281543915
+  hidden angularVelocity_5 0.00021250590763159817 -7.273547007865835e-05 0.0003459310011798986
+  hidden rotation_6 0 1 0 1.0300199372246701
+  hidden position_7_0 0.0010765761920359385
+  hidden position_7_1 0.0009093057347988598
+  hidden position_7_2 0.001699876197278516
+  hidden position_7_3 0.0015273503784909437
+  hidden rotation_8 9.323424077479825e-11 0.0005382880700227752 0.9999998551229664 3.1415929999999497
+  hidden position_9_0 -0.0015524189878703468
+  hidden rotation_10 -1 0 0 0.0015524189879750538
+  hidden rotation_12 7.874819426963816e-11 0.0004546528517359394 0.999999896645387 3.141592999999964
+  hidden position_12_0 -0.0013851485306341383
+  hidden rotation_13 1 0 0 0.0016998761972854847
+  hidden position_14_0 -0.0021610015889291234
+  hidden rotation_15 -0.9999999999999999 0 0 0.0021610015888722574
+  hidden rotation_17 1 0 0 0.0015273503784018069
+  hidden position_17_0 -0.0019884757701431922
+  translation 0 2.2 0.7
+  rotation 0 0 1 1.570846325
+  controller "ur5e_controller"
+  supervisor TRUE
+  toolSlot [
+    Pose {
+      rotation 1 0 0 -1.570796
+      children [
+        Robotiq2f85Gripper {
+          name "robotiq_2f85"
+        }
+        Emitter {
+          name "tx"
+          channel 1
+        }
+        Receiver {
+          name "rx"
+          channel 1
+        }
+      ]
+    }
+    Pose {
+      translation -0.05 0 0
+      rotation 0 0 1 1.570796
+      children [
+        Solid {
+          children [
+            Camera {
+              name "wrist_camera"
+              fieldOfView 1.0472
+              width 640
+              height 480
+              far 3
+            }
+          ]
+          name "wrist_cam_mount"
+          boundingObject Box {
+            size 0.02 0.02 0.03
+          }
+          physics Physics {
+            mass 0.05
+          }
+        }
+      ]
+    }
+  ]
+}
+Robot {
+  name "BATCH_SUP"
+  supervisor TRUE
+  controller "superv"
+  children [
+    Emitter { name "tx" channel 1 }
+    Receiver { name "rx" channel 1 }
+  ]
+}
+DEF MAIN_LIGHT TexturedBackground {
+  texture "factory"
+  skybox FALSE
+}
+Floor {
+  translation 0 2.4 0
+  size 6.95 5
+  tileSize 2 2
+  appearance BakelitePlastic {
+    color "braun"
+  }
+}
+DEF ROOF Pose {
+  translation 0.06 5.545 3.65
+  rotation 0 1 0 3.141592644
+  children [
+    Shape {
+      appearance Plaster {
+        textureTransform TextureTransform {
+          scale 5.7 5.05
+        }
+      }
+      geometry Plane {
+        size 7.2 11.36
+      }
+    }
+  ]
+}
+Table {
+  translation 0 2.64217 -2.62797e-05
+  rotation 0 0 1 1.5708
+  name "table(4)"
+  size 1.2 2.2 0.7
+  feetSize 0.05 0.05
+  trayAppearance Parquetry {
+    type "light strip"
+    colorOverride 0.933333 0.8 0.8
+  }
+  legAppearance BrushedAluminium {
+    colorOverride 0.333 0.341 0.325
+  }
+}
+PlasticCrate {
+  translation 0.646133 2.75623 0.72
+  rotation 0 0 1 -0.261795307179586
+  name "plastic crate(1)"
+  size 0.5 0.5 0.2
+  color 0 0 1
+}
+Pose {
+  translation -0.1 2.75 0.7
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          emissiveColor 0.2 0.2 0.2
+        }
+      }
+      geometry Plane {
+        size 0.4 0.3
+      }
+    }
+  ]
+}
+PlasticCrate {
+  translation -0.75 2.53 0.72
+  rotation 0 0 1 -0.261795307179586
+  name "plastic crate(2)"
+  size 0.5 0.5 0.2
+  color 1 0 0
+}
+DEF RED_CUBE Solid {
+  translation -0.2 2.8 0.7149541003000003
+  rotation -0.8033097685644206 0.0027230839612053127 0.5955552036064478 8.493915970135818e-17
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.03 0.03
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.03 0.03 0.03
+  }
+  physics Physics {
+    mass 0.1
+  }
+  linearVelocity -1.1096428332698826e-17 -4.4944615475524285e-17 -3.2507330161024585e-15
+  angularVelocity 3.2381504884900385e-15 -9.25185853854299e-16 -1.2418564416371817e-16
+}
+DEF BLUE_CUBE Solid {
+  translation -0.01 2.71 0.7149541003000003
+  rotation 0.7899731874826627 0.49981869709255655 -0.3551388926816962 8.908143988157575e-17
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.03 0.03
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject Box {
+    size 0.03 0.03 0.03
+  }
+  physics Physics {
+    mass 0.1
+  }
+  linearVelocity -4.131949668303863e-17 -9.865391660659643e-18 -3.268496584496461e-15
+  angularVelocity 1.3877787807814457e-15 -2.7755575615628914e-15 -2.3643401014057466e-16
+}
+Pose {
+  translation 0.1 2.75 -0.27
+  children [
+    Pose {
+      translation 0.1 -0.1 0
+    }
+  ]
+}
+Wall {
+  translation 0.035 -0.025 0
+  rotation 0 0 1 4.712388966
+  name "wall(21)"
+  size 0.2 7.2 3.65
+  appearance Plaster {
+    colorOverride 1 0.7 0.7
+    textureTransform TextureTransform {
+      scale 3.7 2.4
+    }
+  }
+}
+Group {
+}
